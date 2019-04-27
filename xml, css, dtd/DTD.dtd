@@ -1,0 +1,23 @@
+<!DOCTYPE Wydawnictwa [
+        <!ELEMENT Wydawnictwa (Wydawnictwo)*>
+        <!ELEMENT Wydawnictwo (Nazwa, Autorzy, Książki*)>
+        <!ATTLIST Wydawnictwo
+                Id ID #REQUIRED>
+        <!ELEMENT Autorzy (Autor+)>
+        <!ELEMENT Książki (Książka+)>
+        <!ELEMENT Książka (Tytuł, Cena, DataWydania?, LiczbaStron?)>
+        <!ATTLIST Książka
+                Id ID #REQUIRED
+                Język (polski | angielski) #REQUIRED
+                Autor IDREF #REQUIRED>
+        <!ELEMENT Cena (#PCDATA)>
+        <!ELEMENT DataWydania (#PCDATA)>
+        <!ELEMENT LiczbaStron (#PCDATA)>
+        <!ELEMENT Tytuł (#PCDATA)>
+        <!ELEMENT Nazwa (#PCDATA)>
+        <!ELEMENT Autor (Imię*, Nazwisko)>
+        <!ATTLIST Autor
+                Id ID #REQUIRED>
+        <!ELEMENT Imię (#PCDATA)>
+        <!ELEMENT Nazwisko (#PCDATA)>
+        ]>

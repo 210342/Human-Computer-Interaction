@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:targetNamespace="http://example.com/wydawnictwa" xmlns="http://example.com/wydawnictwa" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Wydawnictwa">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Wydawnictwo" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Nazwa" type="xs:normalizedString" maxOccurs="1"/>
+                            <xs:element name="Autorzy">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Autor" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:all>
+                                                    <xs:element name="Imię" type="xs:normalizedString" minOccurs="1"/>
+                                                    <xs:element name="Nazwisko" type="xs:normalizedString" minOccurs="1"/>
+                                                </xs:all>
+                                                <xs:attribute name="Id" type="xs:ID" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Książki">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Książka" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Tytuł" type="xs:normalizedString" minOccurs="1" maxOccurs="unbounded"/>
+                                                    <xs:element name="Cena" type="xs:decimal" />
+                                                    <xs:element name="DataWydania" type="xs:date" />
+                                                    <xs:element name="LiczbaStron" type="xs:nonNegativeInteger" />
+                                                </xs:sequence>
+                                                <xs:attribute name="Id" type="xs:ID" use="required" />
+                                                <xs:attribute name="Język" type="xs:token" use="required">
+                                                    <xs:simpleType>
+                                                        <xs:restriction base="xs:token">
+                                                            <xs:enumeration value="polski" />
+                                                            <xs:enumeration value="angielski" />
+                                                        </xs:restriction>
+                                                    </xs:simpleType>
+                                                </xs:attribute>
+                                                <xs:attribute name="Autor" type="xs:IDREF" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Id" type="xs:ID" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
