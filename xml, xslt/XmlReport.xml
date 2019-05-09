@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Podsumowanie>
+    <LiczbaWydawnictw>3</LiczbaWydawnictw>
+    <LiczbaAutorów>4</LiczbaAutorów>
+    <LiczbaKsiążekOgółem>5</LiczbaKsiążekOgółem>
+    <Wydawnictwa>
+        <Wydawnictwo>
+            <Nazwa>Altenberg</Nazwa>
+            <LiczbaKsiążek>2</LiczbaKsiążek>
+            <ŚredniaCena>49.9</ŚredniaCena>
+        </Wydawnictwo>
+        <Wydawnictwo>
+            <Nazwa>Penguin Books</Nazwa>
+            <LiczbaKsiążek>1</LiczbaKsiążek>
+            <ŚredniaCena>19.9</ŚredniaCena>
+        </Wydawnictwo>
+        <Wydawnictwo>
+            <Nazwa>Zielona Sowa</Nazwa>
+            <LiczbaKsiążek>2</LiczbaKsiążek>
+            <ŚredniaCena>23.445</ŚredniaCena>
+        </Wydawnictwo>
+    </Wydawnictwa>
+    <NajtańszaKsiążka>Tempest</NajtańszaKsiążka>
+    <NajdroższaKsiążka>Nic bardziej mylnego</NajdroższaKsiążka>
+    <NajstarszaKsiążka>Tempest</NajstarszaKsiążka>
+</Podsumowanie>
