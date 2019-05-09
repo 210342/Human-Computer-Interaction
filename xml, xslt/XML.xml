@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<?xml-stylesheet type="text/css" href="CSS.css" ?>
 
 <Wydawnictwa xmlns:wydawnictwa="http://example.com/wydawnictwa" >
   <Wydawnictwo Id="W1">
