@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+
+<Wydawnictwa xmlns:wydawnictwa="http://example.com/wydawnictwa" >
+  <Wydawnictwo Id="W1">
+    <Nazwa>Altenberg</Nazwa>
+    <Autorzy>
+          <Autor Id="A1">
+            <Imię>Radek</Imię>
+            <Nazwisko>Kotarski</Nazwisko>
+          </Autor>
+          <Autor Id="A4">
+            <Imię>Arlena</Imię>
+            <Nazwisko>Witt</Nazwisko>
+          </Autor>
+    </Autorzy>
+    <Książki>
+      <Książka Id="K1" Język="polski" Autor="A1">
+        <Tytuł>Nic bardziej mylnego</Tytuł>
+        <Cena>49.90</Cena>
+        <DataWydania>2018-11-01</DataWydania>
+        <LiczbaStron>300</LiczbaStron>
+      </Książka>
+      <Książka Id="K2" Język="polski" Autor="A1">
+        <Tytuł>Włam się do mózgu</Tytuł>
+        <Cena>49.90</Cena>
+        <DataWydania>2017-09-11</DataWydania>
+        <LiczbaStron>250</LiczbaStron>
+      </Książka>
+    </Książki>
+  </Wydawnictwo>
+  <Wydawnictwo Id="W2">
+    <Nazwa>Zielona Sowa</Nazwa>
+    <Autorzy>
+        <Autor Id="A2">
+          <Imię>William</Imię>
+          <Nazwisko>Shakespeare</Nazwisko>
+        </Autor>
+    </Autorzy>
+    <Książki >
+      <Książka Id="K3" Język="angielski" Autor="A2">
+        <Tytuł>Tempest</Tytuł>
+        <Cena>19.90</Cena>
+        <DataWydania>2000-01-01</DataWydania>
+        <LiczbaStron>92</LiczbaStron>
+      </Książka>
+      <Książka Id="K4" Język="angielski" Autor="A2">
+        <Tytuł>Hamlet</Tytuł>
+        <Cena>26.99</Cena>
+        <DataWydania>2000-01-01</DataWydania>
+        <LiczbaStron>168</LiczbaStron>
+      </Książka>
+    </Książki>
+  </Wydawnictwo>
+  <Wydawnictwo Id="W3">
+    <Nazwa>Penguin Books</Nazwa>
+    <Autorzy>
+        <Autor Id="A3">
+          <Imię>Matt</Imię>
+          <Nazwisko>Parker</Nazwisko>
+        </Autor>
+    </Autorzy>
+    <Książki>
+      <Książka Id="K5" Język="angielski" Autor="A3">
+        <Tytuł>Humble pi</Tytuł>
+        <Cena>19.90</Cena>
+        <DataWydania>2019-02-24</DataWydania>
+        <LiczbaStron>200</LiczbaStron>
+      </Książka>
+    </Książki>
+  </Wydawnictwo>
+</Wydawnictwa>
