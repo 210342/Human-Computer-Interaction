@@ -11,6 +11,10 @@
         <xsl:text>Raport: &#xA;</xsl:text>
         <xsl:apply-templates />
     </xsl:template>
+    <xsl:template match="Wydawnictwo">
+        <xsl:apply-templates select="Autorzy" />
+        <xsl:apply-templates select="Książki" />
+    </xsl:template>
     <xsl:template match="Autorzy">
         <xsl:text>&#xA;Autorzy z wydawnictwa </xsl:text>
         <xsl:value-of select="../Nazwa" />
@@ -36,13 +40,13 @@
         <xsl:text>Tytuł: </xsl:text>
         <xsl:value-of select="Tytuł" />
         <xsl:text>&#xA;</xsl:text>
-        <xsl:choose>
-            <xsl:when test="../../Autorzy/Autor/@Id = @Autor">
-                <xsl:text>Autor: </xsl:text>
-                <xsl:value-of select="../../Autorzy/Autor/Name" />
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:when>
-        </xsl:choose>
-
+        <xsl:variable name="autor" select="@Autor" />
+        <xsl:if test="../../Autorzy/Autor/@Id = $autor">
+            <xsl:text>Autor: </xsl:text>
+            <xsl:value-of select="../../Autorzy/Autor/Imię" />
+            <xsl:text> </xsl:text>
+            <xsl:value-of select="../../Autorzy/Autor/Nazwisko" />
+            <xsl:text>&#xA;&#xA;</xsl:text>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
