@@ -79,25 +79,41 @@
             <xsl:value-of select="../Nazwa" />
             <xsl:text>:&#xA;</xsl:text>
         </fo:block>
-        <fo:block>
-            <xsl:apply-templates select="Książka" />
-        </fo:block>
+        <fo:table border="solid black" width="100%" font-size="8px">
+            <fo:table-header>
+                <fo:table-row>
+                    <fo:table-cell border="solid black">
+                        <fo:block font-weight="bold" text-align="center">Tytuł</fo:block>
+                    </fo:table-cell>
+                    <fo:table-cell border="solid black">
+                        <fo:block font-weight="bold" text-align="center">Autor</fo:block>
+                    </fo:table-cell>
+                </fo:table-row>
+            </fo:table-header>
+            <fo:table-body>
+                <xsl:apply-templates select="Książka" />
+            </fo:table-body>
+        </fo:table>
     </xsl:template>
 
     <xsl:template match="Książka">
-        <fo:block>
-            <xsl:text>Tytuł: </xsl:text>
-            <xsl:value-of select="Tytuł" />
-            <fo:block />
-            <xsl:variable name="autor" select="@Autor" />
-            <xsl:if test="../../Autorzy/Autor/@Id = $autor">
-                <xsl:text>Autor: </xsl:text>
-                <xsl:value-of select="../../Autorzy/Autor/Imię" />
-                <xsl:text> </xsl:text>
-                <xsl:value-of select="../../Autorzy/Autor/Nazwisko" />
-                <xsl:text>&#xA;&#xA;</xsl:text>
-            </xsl:if>
-        </fo:block>
+        <fo:table-row>
+            <fo:table-cell border="solid black">
+                <fo:block font-weight="bold" text-align="center">
+                    <xsl:value-of select="Tytuł" />
+                </fo:block>
+            </fo:table-cell>
+            <fo:table-cell border="solid black">
+                <fo:block font-weight="bold" text-align="center">
+                    <xsl:variable name="autor" select="@Autor" />
+                    <xsl:if test="../../Autorzy/Autor/@Id = $autor">
+                        <xsl:value-of select="../../Autorzy/Autor/Imię" />
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="../../Autorzy/Autor/Nazwisko" />
+                    </xsl:if>
+                </fo:block>
+            </fo:table-cell>
+        </fo:table-row>
     </xsl:template>
 
 
