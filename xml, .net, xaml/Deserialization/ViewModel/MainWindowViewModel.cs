@@ -10,12 +10,32 @@ namespace ViewModel
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+        #region Bound Data
+
+        private Root modelRoot = new Root();
+
+        public Root ModelRoot
+        {
+            get => modelRoot;
+            set
+            {
+                modelRoot = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region Logic DI
+
         private readonly Serializer serializer = new Serializer();
+        private readonly Validator validator = new Validator();
 
-
-        public Root ModelRoot { get; set; } = new Root();
         public ISourceProvider SaveFileDialog { get; set; }
         public ISourceProvider LoadFileDialog { get; set; }
+        public IInformationProvider InformationProvider { get; set; }
+
+        #endregion
 
         public MainWindowViewModel()
         {
@@ -30,7 +50,7 @@ namespace ViewModel
 
         private async Task SaveToFile()
         {
-            if(SaveFileDialog.GetAccess())
+            if(SaveFileDialog.GetAccess("Choose XML file", FileExtensionEnum.XML))
             {
                 serializer.Access(SaveFileDialog.GetPath());
                 await serializer.Save(ModelRoot);
@@ -39,10 +59,27 @@ namespace ViewModel
 
         private async Task LoadFromFile()
         {
-            if(LoadFileDialog.GetAccess())
+            if (!LoadFileDialog.GetAccess("Choose XML file", FileExtensionEnum.XML))
             {
-                serializer.Access(LoadFileDialog.GetPath());
+                return;
+            }
+
+            string xmlPath = LoadFileDialog.GetPath();
+
+            if (!LoadFileDialog.GetAccess("Choose Schema for validation", FileExtensionEnum.XSD))
+            {
+                return;
+            }
+            string xsdPath = LoadFileDialog.GetPath();
+
+            if (validator.Validate(xmlPath, xsdPath))
+            {
+                serializer.Access(xmlPath);
                 ModelRoot = await serializer.Load();
+            }
+            else
+            {
+                InformationProvider.Show("XML file is not valid for given xsd", "XML validation error");
             }
         }
 

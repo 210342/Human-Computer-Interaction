@@ -33,11 +33,7 @@ namespace Deserialization.Model
         public string Title { get; set; }
 
         [XmlElement(ElementName = "Cena", Namespace = "", IsNullable = false)]
-        public string Price
-        {
-            get => price.ToString().Replace(".", ",");
-            set => double.TryParse(value.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out price);
-        }
+        public double Price { get; set; }
 
         [XmlElement(ElementName = "DataWydania", Namespace = "", IsNullable = false)]
         public string PublishmentDate { get; set; }
@@ -46,6 +42,5 @@ namespace Deserialization.Model
         public int PagesQuantity { get; set; }
 
         private LanguageEnum language;
-        private double price;
     }
 }

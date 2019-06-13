@@ -6,7 +6,7 @@ namespace ViewModel
 {
     public interface ISourceProvider
     {
-        bool GetAccess();
+        bool GetAccess(string dialogTitle, FileExtensionEnum extension);
         string GetPath();
     }
 }

@@ -27,6 +27,7 @@ namespace XAML
             MainWindowViewModel viewModel = DataContext as MainWindowViewModel;
             viewModel.SaveFileDialog = new SaveFileDialogProvider();
             viewModel.LoadFileDialog = new LoadFileDialogProvider();
+            viewModel.InformationProvider = new DialogProvider();
         }
     }
 }
