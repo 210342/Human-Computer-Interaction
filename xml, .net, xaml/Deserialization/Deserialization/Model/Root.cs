@@ -8,6 +8,6 @@ namespace Deserialization.Model
     public class Root
     {
         [XmlArray("Wydawnictwa"), XmlArrayItem(typeof(Publisher), ElementName = "Wydawnictwo")]
-        public List<Publisher> PublisherList { get; set; }
+        public List<Publisher> Publishers { get; set; }
     }
 }

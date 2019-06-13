@@ -9,6 +9,12 @@ namespace Deserialization.Model
     [XmlRoot(ElementName = "Wydawnictwo", Namespace = "")]
     public class Publisher
     {
+        [XmlAttribute]
+        public string Id { get; set; }
+
+        [XmlElement(ElementName = "Nazwa")]
+        public string Name { get; set; }
+
         [XmlArray("Autorzy"), XmlArrayItem(typeof(Author), ElementName = "Autor")]
         public List<Author> Authors { get; set; }
 

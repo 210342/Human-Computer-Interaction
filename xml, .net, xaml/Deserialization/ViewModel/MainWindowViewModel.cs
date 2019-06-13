@@ -5,6 +5,8 @@ using Deserialization;
 using System.Threading.Tasks;
 using Deserialization.Model;
 using System.Runtime.CompilerServices;
+using System;
+using System.Linq;
 
 namespace ViewModel
 {
@@ -13,6 +15,9 @@ namespace ViewModel
         #region Bound Data
 
         private Root modelRoot = new Root();
+        private Publisher selectedPublisher;
+        private Book selectedBook;
+        private string nameOfAuthorOfSelectedBook;
 
         public Root ModelRoot
         {
@@ -20,6 +25,38 @@ namespace ViewModel
             set
             {
                 modelRoot = value;
+                OnPropertyChanged();
+            }
+        }
+        public Publisher SelectedPublisher
+        {
+            get => selectedPublisher;
+            set
+            {
+                selectedPublisher = value;
+                OnPropertyChanged();
+            }
+        }
+        public Book SelectedBook
+        {
+            get => selectedBook;
+            set
+            {
+                selectedBook = value;
+                Author author = ModelRoot.Publishers
+                        ?.SelectMany(p => p.Authors)
+                        .Where(a => a.Id.Equals(SelectedBook?.AuthorId))
+                        ?.FirstOrDefault();
+                NameOfAuthorOfSelectedBook = $"{author?.FirstName} {author?.LastName}";
+                OnPropertyChanged();
+            }
+        }
+        public string NameOfAuthorOfSelectedBook
+        {
+            get => nameOfAuthorOfSelectedBook;
+            set
+            {
+                nameOfAuthorOfSelectedBook = value;
                 OnPropertyChanged();
             }
         }
@@ -41,12 +78,16 @@ namespace ViewModel
         {
             SaveToFileCommand = new RelayCommand(async () => await SaveToFile(), () => true);
             LoadFromFileCommand = new RelayCommand(async () => await LoadFromFile(), () => true);
+            ClearViewCommand = new RelayCommand(() => ModelRoot = new Root(), () => true);
+            CloseAppCommand = new RelayCommand(() => Environment.Exit(0), () => true);
         }
 
         #region Commands
 
         public ICommand SaveToFileCommand { get; }
         public ICommand LoadFromFileCommand { get; }
+        public ICommand ClearViewCommand { get; }
+        public ICommand CloseAppCommand { get; }
 
         private async Task SaveToFile()
         {

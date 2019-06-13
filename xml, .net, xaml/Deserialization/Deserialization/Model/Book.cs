@@ -16,7 +16,7 @@ namespace Deserialization.Model
         [XmlAttribute(AttributeName = "Autor")]
         public string AuthorId { get; set; }
 
-        [XmlAttribute]
+        [XmlAttribute(AttributeName = "Język")]
         public string Language
         {
             get
